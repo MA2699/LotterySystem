@@ -45,3 +45,13 @@ Lottery Purchase and Draw System
 1. 打开MySQL终端或Navicat，执行以下命令创建数据库：
    ```sql
    CREATE DATABASE IF NOT EXISTS lottery_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+   
+## 数据库脚本说明
+在`doc/database`目录下提供两个核心脚本，支持数据库环境快速搭建与重置：
+1. `init_database.sql`：数据库初始化脚本  
+   - 功能：创建`lottery_db`数据库及所有核心表（user/lottery_ticket/draw_record/winning_record），初始化管理员账号（admin/admin123）；  
+   - 使用场景：首次部署项目时执行，生成完整数据库环境。
+
+2. `reset_lottery_complete.sql`：数据库清理重置脚本  
+   - 功能：清空所有业务数据（保留admin用户）、重置表自增ID、恢复admin余额为1000元、创建新一期未开奖记录；  
+   - 使用场景：测试环境数据混乱时执行，快速恢复初始测试状态。
